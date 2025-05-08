@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import {
   BsPeopleFill,
   BsChatDotsFill,
@@ -42,11 +44,19 @@ export default function Hero() {
       id="hero"
       className="relative pt-[150px] bg-[linear-gradient(135deg,_color-mix(in_srgb,var(--accent-color),transparent_95%)_50%,_color-mix(in_srgb,var(--accent-color),transparent_98%)_25%,_transparent_50%)]"
     >
-      <div className="container mx-auto px-4">
+      <div
+        className="container mx-auto px-4"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
         <div className="flex flex-wrap items-center">
           {/* Left content */}
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0">
-            <div className="relative z-10">
+            <div
+              className="relative z-10"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <div className="inline-flex items-center mb-4 px-4 py-2 rounded-full font-medium text-[var(--accent-color)] bg-[color-mix(in_srgb,var(--accent-color),transparent_92%)]">
                 <BsActivity className="text-xl mr-2" />
                 Real-Time Messages, Real-Time Connections!
@@ -64,19 +74,25 @@ export default function Hero() {
               </p>
 
               <div className="flex justify-center lg:justify-start">
-                <a
-                  href="#about"
-                  className="btn btn-get-started mx-1 px-10 py-3 rounded-full font-medium transition-all"
+                <ScrollLink
+                  to="pricing"
+                  smooth={true}
+                  duration={500}
+                  className="btn cursor-pointer btn-get-started mx-1 px-10 py-3 rounded-full font-medium transition-all"
                 >
                   Get Started
-                </a>
+                </ScrollLink>
               </div>
             </div>
           </div>
 
           {/* Right image */}
           <div className="w-full lg:w-1/2">
-            <div className="relative text-center z-10">
+            <div
+              className="relative text-center z-10"
+              data-aos="zoom-out"
+              data-aos-delay="300"
+            >
               <img
                 src="/images/illustration-1.webp"
                 alt="Hero"
@@ -107,7 +123,11 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5 bg-[var(--surface-color)] rounded-2xl shadow-md p-4">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5 bg-[var(--surface-color)] rounded-2xl shadow-md p-4"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
           {stats.map((stat, index) => (
             <div key={index} className="flex items-center gap-4 p-2 md:p-6">
               <div className="w-16 h-16 rounded-full flex items-center justify-center bg-[color-mix(in_srgb,var(--accent-color),transparent_92%)] hover:bg-[var(--accent-color)] transition-colors text-[var(--accent-color)] hover:text-[var(--contrast-color)]">

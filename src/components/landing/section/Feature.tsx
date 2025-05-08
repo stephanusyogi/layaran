@@ -33,8 +33,11 @@ const features = [
 
 export default function Feature() {
   return (
-    <section id="features" className="py-20 features section">
-      <div className="container mx-auto px-4 text-center mb-12">
+    <section id="features" className="md:mt-10 py-10 features section">
+      <div
+        className="container mx-auto px-4 text-center mb-12"
+        data-aos="fade-up"
+      >
         <h2 className="text-3xl lg:text-4xl font-bold text-[#2d3e50] dark:text-white mb-2 relative inline-block after:content-[''] after:block after:w-16 after:h-[3px] after:bg-[#0d6efd] after:mx-auto after:mt-2">
           Features
         </h2>
@@ -44,7 +47,11 @@ export default function Feature() {
         </p>
       </div>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col-reverse xl:flex-row items-center justify-between gap-12 xl:gap-0">
+        <div
+          className="flex flex-col-reverse xl:flex-row items-center justify-between gap-12 xl:gap-0"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           {/* Left Text Content */}
           <div className="xl:w-5/12" data-aos="fade-up" data-aos-delay="200">
             <h2 className="text-3xl font-medium leading-tight mb-4 text-[color:var(--heading-color)]">

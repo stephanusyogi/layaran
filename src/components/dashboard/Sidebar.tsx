@@ -1,21 +1,22 @@
-export default function Header() {
-    return (
-      <header className="bg-white shadow fixed w-full z-50 top-0">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold text-accent">
-            Layaran
-          </a>
-          <nav className="space-x-6 hidden md:flex">
-            <a href="#about" className="hover:text-accent text-sm">About</a>
-            <a href="#features" className="hover:text-accent text-sm">Features</a>
-            <a href="#pricing" className="hover:text-accent text-sm">Pricing</a>
-            <a href="#faq" className="hover:text-accent text-sm">FAQ</a>
-          </nav>
-          <a href="/dashboard" className="bg-accent text-white px-4 py-2 rounded text-sm">
-            Member Area
-          </a>
-        </div>
-      </header>
-    )
-  }
-  
+"use client";
+
+import SidebarHeader from "./SidebarHeader";
+import SidebarMenu from "./SidebarMenu";
+import SidebarFooter from "./SidebarFooter";
+import { useSidebar } from "./context/SidebarContext";
+
+export default function Sidebar() {
+  const { isOpen } = useSidebar();
+
+  return (
+    <aside
+      className={`group sidebar top-0 left-0 z-50 h-screen flex flex-col transition-all duration-300 bg-white dark:bg-black border-r border-gray-200 dark:border-gray-800
+    ${isOpen ? "w-[200px] lg:w-[290px]" : "w-[90px] lg:hover:w-[290px]"}
+  `}
+    >
+      <SidebarHeader />
+      <SidebarMenu />
+      <SidebarFooter />
+    </aside>
+  );
+}

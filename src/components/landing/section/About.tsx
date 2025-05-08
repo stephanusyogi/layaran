@@ -5,8 +5,12 @@ import { BsCheckCircleFill } from "react-icons/bs";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 about section">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-10 about section">
+      <div
+        className="container mx-auto px-4"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
         <div className="flex flex-col-reverse xl:flex-row items-center justify-between gap-12 xl:gap-0">
           {/* Text Content */}
           <div className="xl:w-5/12" data-aos="fade-up" data-aos-delay="200">
@@ -54,7 +58,11 @@ export default function About() {
           </div>
 
           {/* Image Side */}
-          <div className="xl:w-6/12 relative image-wrapper">
+          <div
+            className="xl:w-6/12 relative image-wrapper"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div className="images relative">
               <Image
                 src="/images/about_us.jpeg"
@@ -71,7 +79,7 @@ export default function About() {
                 className="small-image rounded-2xl hidden md:block"
                 style={{
                   position: "absolute",
-                  top: "20%",
+                  top: "10%",
                   left: "-10%",
                   width: "45%",
                   border: "8px solid var(--surface-color)",

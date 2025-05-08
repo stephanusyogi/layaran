@@ -1,8 +1,10 @@
+@import "tailwindcss";
+
 :root {
   /* Fonts */
-  --default-font: sans-serif;
-  --heading-font: sans-serif;
-  --nav-font: sans-serif;
+  --default-font: "Roboto", sans-serif;
+  --heading-font: "Nunito", sans-serif;
+  --nav-font: "Inter", sans-serif;
 
   /* Global Colors */
   --background-color: #ffffff;
@@ -22,17 +24,19 @@
   --nav-dropdown-hover-color: #0d83fd;
 
   --dropdown-bg-color: #fff;
-
   --btn-get-started-color: #fff;
+  --bg-blue-opacity: #f3f9ff;
+
+  --table-header-bg-color: #007bff;
+  --table-row-border-color: #2d333b;
+  --table-text-color: #212529;
+  --table-muted-text-color: #6c757d;
+
+  --success-mark-color: #28a745;
+  --error-mark-color: #dc3545;
 
   /* Global Behaviors */
   scroll-behavior: smooth;
-}
-
-.font-vars {
-  --default-font: var(--font-roboto);
-  --heading-font: var(--font-nunito);
-  --nav-font: var(--font-inter);
 }
 
 .dark {
@@ -53,12 +57,27 @@
 
   --dropdown-bg-color: rgba(33, 37, 41, 0.9);
   --btn-get-started-color: #161b22;
+  --bg-blue-opacity: #0d1117;
+
+  --table-header-bg-color: #2389f4;
+  --table-row-border-color: #ddd;
+  --table-text-color: #e6edf3;
+  --table-muted-text-color: #8b949e;
+
+  --success-mark-color: #3fb950;
+  --error-mark-color: #f85149;
 }
 
 body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+}
+
+@media screen and (max-width: 768px) {
+  [data-aos][data-aos-delay] {
+    transition-delay: 0 !important;
+  }
 }
 
 h1,
@@ -74,7 +93,18 @@ a.text-nav {
   transition: 0.3s;
 }
 
+.text-nav {
+  color: var(--nav-color);
+  font-family: var(--nav-font);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
 a.text-nav:hover {
+  color: color-mix(in srgb, var(--nav-hover-color), transparent 25%);
+  text-decoration: none;
+}
+.text-nav:hover {
   color: color-mix(in srgb, var(--nav-hover-color), transparent 25%);
   text-decoration: none;
 }
@@ -97,14 +127,15 @@ a.text-nav:hover {
 }
 
 .btn-login {
-  color: var(--contrast-color);
   background-color: var(--accent-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border-color: var(--accent-color);
+  color: var(--btn-get-started-color);
 }
 
 .btn-login:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
-  color: var(--contrast-color);
+  color: var(--btn-get-started-color);
+  background-color: color-mix(in srgb, var(--accent-color), black 20%);
+  border-color: color-mix(in srgb, var(--accent-color), black 20%);
 }
 
 /* .dropdown-menu {
@@ -163,6 +194,3 @@ a.btn-get-started:hover {
   will-change: transform;
 }
 /* About Section */
-
-/* \Feature Section */
-/* \Feature Section */

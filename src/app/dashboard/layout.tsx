@@ -1,26 +1,53 @@
-// src/app/dashboard/layout.tsx
-// import '@/styles/dashboard.css'
-import Sidebar from '@/components/dashboard/Sidebar'
-import Topbar from '@/components/dashboard/Topbar'
-import type { Metadata } from 'next'
+import { SidebarProvider } from "@/components/dashboard/context/SidebarContext";
+import DashboardLoader from "@/components/dashboard/DashboardLoader";
+import Header from "@/components/dashboard/Header";
+import MobileOverlay from "@/components/dashboard/MobileOverlay";
+import Sidebar from "@/components/dashboard/Sidebar";
+import "@/styles/dashboard.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Dashboard | Layaran Admin',
-  description: 'Admin panel to manage events, messages, and user settings.',
-}
+  title: "Dashboard | Layaran Member Area",
+  description: "Admin panel to manage events, messages, and user settings.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico", rel: "apple-touch-icon", sizes: "180x180" },
+    ],
+  },
+};
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="font-inter text-gray-800 bg-gray-100">
-        <div className="flex">
+    <>
+      <SidebarProvider>
+        {/* Preloader Start */}
+        <DashboardLoader />
+        {/* Preloader End */}
+
+        {/* Page Wrapper Start */}
+        <div className="relative z-50 flex h-screen overflow-x-hidden">
+          {/* Sidebar Start */}
           <Sidebar />
-          <div className="flex-1">
-            <Topbar />
-            <main className="p-4">{children}</main>
+          {/* Sidebar End */}
+          <div className="relative z-50 flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+            {/* Mobile Overlay Start */}
+            <MobileOverlay />
+            {/* Mobile Overlay End */}
+            {/* Header Start */}
+            <Header />
+            {/* Header End */}
+            <main className="h-full">{children}</main>
           </div>
         </div>
-      </body>
-    </html>
-  )
+        {/* Page Wrapper End */}
+      </SidebarProvider>
+    </>
+  );
 }
