@@ -4,7 +4,12 @@ import Header from "@/components/dashboard/Header";
 import MobileOverlay from "@/components/dashboard/MobileOverlay";
 import Sidebar from "@/components/dashboard/Sidebar";
 import "@/styles/dashboard.css";
+import { getServerSession } from "next-auth";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { SessionProvider } from "../context/SessionContext";
+import { log } from "console";
+import { authOptions } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Dashboard | Layaran Member Area",
@@ -19,13 +24,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/");
+  }
+
   return (
-    <>
+    <SessionProvider session={session}>
       <SidebarProvider>
         {/* Preloader Start */}
         <DashboardLoader />
@@ -48,6 +59,6 @@ export default function DashboardLayout({
         </div>
         {/* Page Wrapper End */}
       </SidebarProvider>
-    </>
+    </SessionProvider>
   );
 }

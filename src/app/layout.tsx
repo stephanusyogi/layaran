@@ -2,6 +2,9 @@ import "@/styles/landing.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import AuthProvider from "./providers/AuthProvider";
+import SessionMonitor from "@/components/SessionMonitor";
+import { Toaster } from "react-hot-toast";
+import { ReduxProvider } from "./providers/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "Layaran - Real-Time Messages, Real-Time Connections!",
@@ -24,11 +27,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
       <body className="h-full">
-        <AuthProvider>
-          <ThemeProvider attribute="class" enableSystem defaultTheme="system">
-            {children}
-          </ThemeProvider>
-        </AuthProvider>
+        <ReduxProvider>
+          <AuthProvider>
+            <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+              <Toaster
+                position="bottom-right"
+                toastOptions={{ duration: 5000 }}
+              />
+              <SessionMonitor />
+              {children}
+            </ThemeProvider>
+          </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

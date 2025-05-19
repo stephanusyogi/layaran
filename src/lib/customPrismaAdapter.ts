@@ -8,7 +8,6 @@ export function CustomPrismaAdapter(p = prisma): Adapter {
   return {
     ...base,
 
-    // ✅ FIX: Define the method without `function` keyword
     async linkAccount(data: AdapterAccount): Promise<AdapterAccount> {
       const created = await p.account.create({
         data: {

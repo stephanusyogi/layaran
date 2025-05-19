@@ -9,6 +9,7 @@ import {
   BsShieldLock,
 } from "react-icons/bs";
 import { useSidebar } from "./context/SidebarContext";
+import clsx from "clsx";
 
 const menuItems = [
   { label: "Dashboard", href: "/dashboard", icon: BsGrid },
@@ -33,15 +34,19 @@ export default function SidebarMenu() {
           <li key={item.label}>
             <a
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300
-                ${isOpen ? "justify-start" : "justify-center"}
-              `}
+              className={clsx(
+                "flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300",
+                isOpen
+                  ? "justify-start"
+                  : "justify-center lg:group-hover:justify-start"
+              )}
             >
               <item.icon size={18} />
               <span
-                className={`transition-all duration-200 origin-left ${
-                  isOpen ? "inline-block" : "hidden"
-                }`}
+                className={clsx(
+                  "transition-all duration-200 origin-left",
+                  isOpen ? "inline-block" : "hidden lg:group-hover:inline-block"
+                )}
               >
                 {item.label}
               </span>
